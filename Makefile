@@ -6,13 +6,13 @@ STARKNET_CASM_COMPILER = /home/datben/Bureau/StarkNet/cairo/target/release/stark
 
 
 
-compile-sk-siera: entrypoint.cairo
-	$(STARKNET_SIERA_COMPILER) entrypoint.cairo entrypoint.json
+compile-sk-siera: contract.cairo
+	$(STARKNET_SIERA_COMPILER) contract.cairo contract.json
 
-compile-sk-casm: entrypoint.json 
-	$(STARKNET_CASM_COMPILER) entrypoint.json entrypoint.casm
+compile-sk-casm: contract.json 
+	$(STARKNET_CASM_COMPILER) contract.json contract.casm
 
 all: clean compile-sk-siera compile-sk-casm
 
 clean:
-	rm -f entrypoint.json entrypoint.casm
+	rm -f contract.json contract.casm
