@@ -1,18 +1,16 @@
 #[contract]
-mod TestContract {
-    struct Storage {
-        my_storage_var: felt
-    }
+mod HelloStarknet {
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
 
-    fn internal_func() -> felt {
-        1
-    }
+
+    #[event]
+    fn Hello(from: ContractAddress, value: felt252, nonce: felt252) {}
+
 
     #[external]
-    fn test(ref arg: felt, arg1: felt, arg2: felt) -> felt {
-        let mut x = my_storage_var::read();
-        x += 1;
-        my_storage_var::write(x);
-        x + internal_func()
+    fn Say_Hello(message: felt252) {
+        let caller = get_caller_address();
+        Hello(caller, message, 10);
     }
 }
