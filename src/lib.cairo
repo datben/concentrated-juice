@@ -1,3 +1,2 @@
-mod math;
-mod juice;
-mod utils;
+mod business_logic;
+mod contract;
